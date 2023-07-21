@@ -34,7 +34,7 @@ app.get('/confirm', function (req, res) {
 
 app.post('/register', async function (req, res) {
 
-  let token = md5(Date.now())
+  let token = md5(req.body.email + Date.now())
 
 
     let testAccount = await nodemailer.createTestAccount();
