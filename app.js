@@ -3,6 +3,7 @@ const app = express()
 const path = require('path')
 const bodyParser = require('body-parser')
 const nodemailer = require('nodemailer')
+const md5 = require('md5')
 
 
 
@@ -27,6 +28,9 @@ app.get('/register', function (req, res) {
 
 app.post('/register', async function (req, res) {
 
+  let token = md5(Date.now())
+
+
     let testAccount = await nodemailer.createTestAccount();
 
     let transporter = nodemailer.createTransport({
@@ -39,15 +43,18 @@ app.post('/register', async function (req, res) {
         },
       });
 
-
-      //async function main() {
-        
+       
         let info = await transporter.sendMail({
           from: '"Backend practice project" <no-reply@example.com>',
           to: "you@example.com, andyou2@example.com",
           subject: "(This is a test) Your registration has been successful",
           text: "I hope this email finds you well. Thank you for getting this far!",
-          html: "<b>I hope this email finds you well. Thank you for getting this far!</b>",
+          html: `
+              <a href="http://localhost:4000/confirm?token=${token}">
+                Confirmar cuenta
+              </a>
+              <b>I hope this email finds you well. Thank you for getting this far!</b>"
+          `,
         });
 
 
