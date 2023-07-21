@@ -1,14 +1,14 @@
 const express = require('express')
 const app = express()
 const path = require('path')
-const bodyParser = require('body-parser')
+//const bodyParser = require('body-parser')
 const nodemailer = require('nodemailer')
 const md5 = require('md5')
 
 
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended:false}))
+app.use(express.json())
+app.use(express.urlencoded({extended:false}))
 
 
 app.get('/', function (req, res) {
@@ -28,7 +28,7 @@ app.get('/register', function (req, res) {
 
 app.get('/confirm', function (req, res) {
 
-  res.send('Confirmado')
+  res.send('Confirmado!!')
 })
 
 
