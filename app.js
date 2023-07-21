@@ -26,6 +26,12 @@ app.get('/register', function (req, res) {
 })
 
 
+app.get('/confirm', function (req, res) {
+
+  res.send('Confirmado')
+})
+
+
 app.post('/register', async function (req, res) {
 
   let token = md5(Date.now())
