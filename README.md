@@ -9,4 +9,4 @@ Página HTML con formulario de dos campos
 
 Una url para recibir datos (POST)
 validación
-enviar mail (nodemailer)
+enviar mail (nodemailer) con enlace para la confirmación
