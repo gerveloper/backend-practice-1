@@ -31,4 +31,15 @@ let User = new Schema({
 })
 
 
+//Static
+User.statics.findByToken = function (token) {
+    return this.findOne({confirmationToken : token})
+}
+
+//Instance
+User.methods.findByEmail = function (cb) {
+    return model('User').find({ email : this.email }, cb)
+}
+
+
 module.exports = model('User', User)
