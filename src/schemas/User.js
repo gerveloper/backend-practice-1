@@ -3,8 +3,6 @@ const md5 = require('md5')
 
 let User = new Schema({
     
-    _id : Types.ObjectId, 
-
     email : {
         type : String,
         required : true
@@ -27,9 +25,7 @@ let User = new Schema({
         // required : true,
         default : function () {
 
-            let token = md5(Date.now())
-
-            return token
+            return md5(Date.now())
         }
     }
 })
