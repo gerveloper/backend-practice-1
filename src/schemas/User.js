@@ -1,4 +1,4 @@
-const {Schema, Types, model} = require('mongoose')
+const {Schema, model} = require('mongoose')
 const md5 = require('md5')
 
 let User = new Schema({
