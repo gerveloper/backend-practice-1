@@ -57,8 +57,8 @@ router.post('/register', async function (req, res) {
       subject: "(This is a test) Your registration has been successful",
       text: "I hope this email finds you well. Thank you for getting this far!",
       html: `
-          <a href="http://localhost:4000/confirm?token=${u.confirmationToken}">
-            Confirmar cuenta
+          <a href="http://localhost:4000/auth/confirm?token=${u.confirmationToken}">
+            Confirm account
           </a>
           <b>I hope this email finds you well. Thank you for getting this far!</b>"
       `,
@@ -68,7 +68,7 @@ router.post('/register', async function (req, res) {
         console.log("Message sent: %s", info.messageId);
         console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
 
-        res.send(nodemailer.getTestMessageUrl(info))
+        res.send(`Please, follow <a href="${nodemailer.getTestMessageUrl(info)}">this link</a>.`)
 
     })
     .catch(err => {
