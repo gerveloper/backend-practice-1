@@ -11,7 +11,8 @@ router.get('/', function (req, res) {
             res.send(categories)
         })
         .catch(function (err) {
-            res.send({message : err.message})
+            console.log(err)
+            res.send({message : "error"})
         })
 })
 
@@ -24,7 +25,8 @@ router.get('/:id', function (req, res) {
             res.send(category)
         })
         .catch(function (err) {
-            res.send({message : err.message})
+            console.log(err)
+            res.send({message : "error"})
         })
 })
 
@@ -39,7 +41,8 @@ router.post('/', function (req, res) {
             res.send({message : category._id})
         })
         .catch(function (err) {
-            res.send({message : err.message})
+            console.log(err)
+            res.send({message : "error"})
         })  
 })
 
@@ -47,12 +50,13 @@ router.post('/', function (req, res) {
 router.patch('/:id', function (req, res) {
 
     Category
-        .findByIdAndUpdate(req.params.id, {})
+        .findByIdAndUpdate(req.params.id, req.body)
         .then(function () {
-            res.send()
+            res.send({message : "updated"})
         })
         .catch(function (err) {
-            res.send({message : err.message})
+            console.log(err)
+            res.send({message : "error"})
         })
 })
 
@@ -60,11 +64,12 @@ router.patch('/:id', function (req, res) {
 router.delete('/:id', function (req, res) {
 
     Category
-        .deleteOne(req.params.id)
+        .deleteOne({_id : req.params.id})
         .then(function () {
             res.send({message : "category deleted"})
         })
-        .catch(function () {
+        .catch(function (err) {
+            console.log(err)
             res.send({message : "error"})
         })
 })
