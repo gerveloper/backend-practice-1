@@ -48,6 +48,15 @@ router.post('/', function (req, res) {
 
 router.patch('/:id', function (req, res) {
 
+    Address
+        .findByIdAndUpdate(req.params.id, req.body)
+        .then(function () {
+            res.send({message : "updated"})
+        })
+        .catch(function (err) {
+            console.log(err)
+            res.send({message : "error"})
+        })
 })
 
 
