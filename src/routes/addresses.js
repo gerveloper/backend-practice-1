@@ -1,10 +1,10 @@
 const router = require('express').Router()
-const Addresses = require('../schemas/Address')
+const Address = require('../schemas/Address')
 
 
 router.get('/', function (req, res) {
 
-    Addresses
+    Address
         .find()
         .exec()
         .then(function (addresses) {
@@ -19,7 +19,7 @@ router.get('/', function (req, res) {
 
 router.get('/:id', function (req, res) {
 
-    Addresses
+    Address
         .findById(req.params.id)
         .then(function (address) {
             res.send(address)
@@ -32,6 +32,7 @@ router.get('/:id', function (req, res) {
 
 router.post('/', function (req, res) {
 
+    new Address
 })
 
 
