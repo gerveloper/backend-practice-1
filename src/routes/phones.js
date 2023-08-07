@@ -53,7 +53,7 @@ router.patch('/:id', function (req, res) {
     Phone
         .findByIdAndUpdate(req.params.id, req.body)
         .then(function () {
-            res.send({message : "updated"})
+            res.send({message : "phone updated"})
         })
         .catch(function (err) {
             console.log(err)
@@ -64,5 +64,15 @@ router.patch('/:id', function (req, res) {
 
 router.delete('/:id', function (req, res) {
 
-
+    Phone
+    .deleteOne({_id : req.params.id})
+    .then(function () {
+        res.send({message : "phone deleted"})
+    })
+    .catch(function (err) {
+        console.log(err)
+        res.send({message : "error"})
+    })
 })
+
+module.exports = router
