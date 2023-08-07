@@ -19,6 +19,15 @@ router.get('/', function (req, res) {
 
 router.get('/:id', function (req, res) {
 
+    Addresses
+        .findById(req.params.id)
+        .then(function (address) {
+            res.send(address)
+        })
+        .catch(function (err) {
+            console.log(err)
+            res.send({message : "error"})
+        })
 })
 
 router.post('/', function (req, res) {
