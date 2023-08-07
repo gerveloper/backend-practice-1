@@ -32,7 +32,17 @@ router.get('/:id', function (req, res) {
 
 router.post('/', function (req, res) {
 
-    new Address
+    let address = new Address(req.body)
+
+    address
+        .save()
+        .then(function (address) {
+            res.send({message : address._id})
+        })
+        .catch(function (err) {
+            console.log(err)
+            res.send({message : "error"})
+        })
 })
 
 
