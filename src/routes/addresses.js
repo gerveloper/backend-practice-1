@@ -62,8 +62,16 @@ router.patch('/:id', function (req, res) {
 
 router.delete('/:id', function (req, res) {
 
+    Address
+        .deleteOne({_id : req.params.id})
+        .then(function () {
+            res.send({message : "address deleted"})
+        })
+        .catch(function (err) {
+            console.log(err)
+            res.send({message : "error"})
+        })
 })
-
 
 
 module.exports = router
