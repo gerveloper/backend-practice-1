@@ -34,6 +34,17 @@ router.get('/:id', function (req, res) {
 
 router.post('/', function (req, res) {
 
+    let phone = new Phone(req.body)
+
+    phone
+        .save()
+        .then(function (phone) {
+            res.send({message : phone._id})
+        })
+        .catch(function (err) {
+            console.log(err)
+            res.send({message : 'error'})
+        })
 })
 
 
