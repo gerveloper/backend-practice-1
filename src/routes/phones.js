@@ -12,7 +12,7 @@ router.get('/', function () {
         })
         .catch(function (err) {
             console.log(err)
-            res.send({message : 'error'})
+            res.send({message : "error"})
         })
 })
 
@@ -26,7 +26,7 @@ router.get('/:id', function (req, res) {
         })
         .catch(function (err) {
             console.log(err)
-            res.send({message : 'error'})
+            res.send({message : "error"})
         })
 
 })
@@ -43,16 +43,26 @@ router.post('/', function (req, res) {
         })
         .catch(function (err) {
             console.log(err)
-            res.send({message : 'error'})
+            res.send({message : "error"})
         })
 })
 
 
 router.patch('/:id', function (req, res) {
 
+    Phone
+        .findByIdAndUpdate(req.params.id, req.body)
+        .then(function () {
+            res.send({message : "updated"})
+        })
+        .catch(function (err) {
+            console.log(err)
+            res.send({message : "error"})
+        })
 })
 
 
 router.delete('/:id', function (req, res) {
+
 
 })
