@@ -19,7 +19,16 @@ router.get('/', function () {
 
 router.get('/:id', function (req, res) {
 
-    
+    Phone
+        .findById(req.params.id)
+        .then(function (phone) {
+            res.send(phone)
+        })
+        .catch(function (err) {
+            console.log(err)
+            res.send({message : 'error'})
+        })
+
 })
 
 
