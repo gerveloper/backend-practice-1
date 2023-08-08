@@ -2,7 +2,7 @@ const router = require('express').Router()
 const Phone = require('../schemas/Phone')
 
 
-router.get('/', function () {
+router.get('/', function (req, res) {
 
     Phone
         .find()
