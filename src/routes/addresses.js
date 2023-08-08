@@ -22,7 +22,7 @@ router.get('/:id', function (req, res) {
     Address
         .findById(req.params.id)
         .then(function (address) {
-            res.send(address)
+            res.send({message : address})
         })
         .catch(function (err) {
             console.log(err)

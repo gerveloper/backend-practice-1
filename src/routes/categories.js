@@ -22,7 +22,7 @@ router.get('/:id', function (req, res) {
     Category
         .findById(req.params.id)
         .then(function (category) {
-            res.send(category)
+            res.send({message : category.name})
         })
         .catch(function (err) {
             console.log(err)
